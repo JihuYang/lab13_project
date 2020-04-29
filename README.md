@@ -1,3 +1,4 @@
+
 ## mini project 주제
 
 CRUD를 사용한 Fleamarket 관리
@@ -27,3 +28,9 @@ CRUD를 사용한 Fleamarket 관리
     * 파일에 회원의 아이디를 저장
 10. Save data about review 
     * 파일에 등록된 제품들의 후기를 저장
+
+## 팀
+- 팀원: 양지후(21900433), 하정원(21900780)
+- 역할: 양지후 - 뼈대의 역할을 할 CRUD와 main함수를 작성
+        하정원 - 기능적인 역할을 할 Search, SignUp, ReView 함수를 작성
+
