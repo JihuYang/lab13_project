@@ -2,11 +2,12 @@
 #include <string.h>
 
 typedef struct{
-  char name[50];
-  int price;
-  char category[50];
-  char id[10];
-} Product;
+  char name[50];  //제품명
+  int price;      //판매가격
+  char category[50];  //카테고리
+  char id[50];        //아이디
+  int used;           //중고상품여부(0: 중고상품, 1: 새상품)
+} Product;      
 
 int createProduct(Product *p);  //제품명, 판매가격, 카테고리, 아이디, 중고상품여부를 만들기 위한 함수
 void readProduct(Product *p);   //제품을 나열하기 위한 함수
