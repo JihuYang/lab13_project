@@ -31,6 +31,5 @@ CRUD를 사용한 Fleamarket 관리
 
 ## 팀
 - 팀원: 양지후(21900433), 하정원(21900780)
-- 역할: 양지후 - 뼈대의 역할을 할 CRUD와 main함수를 작성
-        하정원 - 기능적인 역할을 할 Search, SignUp, ReView 함수를 작성
+- 역할 양지후 - 뼈대의 역할을 할 CRUD와 main함수를 작성, 하정원 - 기능적인 역할을 할 Search, SignUp, ReView 함수를 작성
 
