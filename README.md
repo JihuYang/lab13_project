@@ -1,16 +1,21 @@
-## 팀소개
+팀소개
+===
 #### 팀원: 21900433 양지후, 21900780 하정원
 #### 역할 
 - 양지후: 뼈대의 역할을 할 CRUD와 main함수를 작성
 - 하정원: 기능적인 역할을 할 Search, SignUp, ReView 함수를 작성
 
-## mini project 주제
+mini project 개발 repository url
+===
+https://github.com/JeongWonHA/mini_project
 
+mini project 주제
+===
 CRUD를 사용한 Fleamarket 관리
 
 
-## mini project 가 가지고 있는 대략적인 기능 설명
-
+mini project 가 가지고 있는 대략적인 기능 설명
+===
 1. Sign up
     * 회원가입
 2. Create Product
