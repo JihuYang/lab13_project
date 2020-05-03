@@ -24,3 +24,27 @@ void SavaData_Product(Product *p, int count){
 int LoadData_Product(Product *p){
 
 }
+
+int SignUp(){
+
+}
+
+int SaveData_Member(char *id, int Sign_count){
+
+}
+
+int LoadData_Member(char *id, int Sign_count){
+
+}
+
+int ReviewBoard(char *review){
+
+}
+
+int SaveData_Review(char *review, int Review_count){
+
+}
+
+int LoadData_Review(char *review, int Review_count){
+
+}
