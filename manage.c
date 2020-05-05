@@ -38,7 +38,7 @@ int loadProduct(Product *p){     //제품 데이터 불러오기 위한 함수
   
 }
 
-void Search(Product *p, int count){
+/*void Search(Product *p, int count){
 	int choice;
 	printf("\n1. 이름 검색\n");
 	printf("2. 가격 검색\n");
@@ -73,19 +73,40 @@ void searchPrice(Product *p, int count){
 
 void searchCategory(Product *p, int count){
 
+}*/
+
+
+char* LogIn(char **id){
+	char* input_id;
+	int i = 0;
+	char *a = NULL;
+	printf("아이디를 입력해주세요: ");
+	scanf("%s",input_id);
+	while(input_id != id[i]){
+		i++;
+	}
+	if(input_id == id[i]) return input_id;
+	return a;
 }
 
-void SavaData_Product(Product *p, int count){
-
+char* ID(char **id){
+	int answer;
+	char* input_id;
+	printf("아이디가 있으십니까? (예:1, 아니오: 0)");
+	scanf("%d",&answer);
+	if(answer == 0){
+		printf("회원 가입하고자하는 아이디를 입력: ");
+		scanf("%s",input_id);
+	}else if(answer == 1){
+		input_id = Login(id);
+		if(input_id != NULL)
+			printf("로그인 완료\n");
+		else
+			printf("입력하신 아이디가 없습니다.\n");
+	}
+	return input_id;	
 }
 
-int LoadData_Product(Product *p){
-
-}
-
-int SignUp(){
-
-}
 
 int SaveData_Member(char *id, int Sign_count){
 
