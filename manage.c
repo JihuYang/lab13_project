@@ -79,7 +79,7 @@ void searchCategory(Product *p, int count){
 char* LogIn(char **id){
 	char* input_id;
 	int i = 0;
-	char *a = NULL;
+	char *a ="Guest";
 	printf("아이디를 입력해주세요: ");
 	scanf("%s",input_id);
 	while(input_id != id[i]){
