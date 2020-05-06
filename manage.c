@@ -2,11 +2,26 @@
 #include "fleamarket.h"
 
 int createProduct(Product *p){    //제품명, 판매가격, 카테고리, 아이디, 중고상품여부를 만들기 위한 함수
-  
+	getchar();
+	printf("회원님의 아이디를 입력하세요 : ");
+    	scanf("%[^\n]s", p->id);
+    	printf("등록할 제품 이름을 입력하세요 : ");
+	getchar();
+    	scanf("%[^\n]s", p->name);
+    	printf("제품의 판매 가격을 입력하세요 : ");
+    	scanf("%d", &p->price);
+    	printf("제품의 카테고리를 입력하세요 : ");
+	getchar();
+    	scanf("%[^\n]s", p->category);
+	printf("제품이 중고 상품이라면 0, 새 상품이라면 1을 입력해 주세요 : ");
+	scanf("%d", &p->used);
+    	printf("\n제품이 등록되었습니다!\n");
+	return 1;
+ 
 }
 
-void readProduct(Product *p){     //제품을 나열하기 위한 함수
-
+void readProduct(Product p){     //제품을 나열하기 위한 함수
+	printf(" %s %5d %s %d\n", p.name, p.price, p.category, p.used);
 }
 
 
@@ -22,7 +37,21 @@ int selectDataNo(Product *p, int count){    //수정하거나 삭제할 제품�
 }
 
 int selectMenu(){    //전체 메뉴를 보여주는 함수
-
+	int menu;
+	printf("\n*********메뉴**********\n");
+	printf("1. 등록된 중고 제품  조회\n");
+	printf("2. 중고 제품 추가\n");
+	printf("3. 중고 제품 정보 수정\n");
+	printf("4. 중고 제품 삭제\n");
+	printf("5. 파일에 저장\n");
+	printf("6. 후기 게시판\n");
+	printf("7. 제품 검색\n");
+	printf("8. 카테고리 검색\n");
+	printf("0. 종료하기\n");
+	printf("**************************\n");
+	printf("원하는 메뉴의 번호를 입력해주세요 :  ");
+	scanf("%d", &menu);
+	return menu;
 }  
   
 void listProduct(Product *p, int count){  //제품 나열을 하기 위한 함수
@@ -75,7 +104,7 @@ void searchCategory(Product *p, int count){
 
 }*/
 
-
+/*
 char* LogIn(char **id){
 	char* input_id;
 	int i = 0;
@@ -106,7 +135,7 @@ char* ID(char **id){
 	}
 	return input_id;	
 }
-
+*/
 
 int SaveData_Member(char *id, int Sign_count){
 
