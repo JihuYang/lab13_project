@@ -6,7 +6,7 @@ int createProduct(Product *p){    //제품명, 판매가격, 카테고리, 아�
 }
 
 void readProduct(Product *p){     //제품을 나열하기 위한 함수
-
+printf(" %s %5d %s %d\n", p.name, p.price, p.category, p.used);
 }
 
 
