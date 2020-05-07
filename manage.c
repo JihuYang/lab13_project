@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "fleamarket.h"
+#define N 100
 
 <<<<<<< HEAD
 void listCategory(){	//전체 카테고리를 보여주는 함수
@@ -40,26 +41,9 @@ int createProduct(Product *p){    //제품명, 판매가격, 카테고리, 아�
  
 }
 
-int createProduct(Product *p){    //제품을 등록하는 함수 제품명, 판매가격, 카테고리, 아이디, 중고상품여부를 만들기 위한 함수
-	getchar();
-	printf("등록할 제품 이름을 입력하세요 : ");
-	scanf("%[^\n]s", p->name);
-	printf("원하는 판매 가격을 입력하세요 : ");
-	scanf("%d", &p->price);
-	getchar();
-	printf("등록할 제품의 카테고리를 입력하세요 : ");
-	scanf("%[^\n]s", p->category);	
-	printf("아이디를 입력해주세요: ");
-	scanf("%[^\n]s", p->id);
-	pritnf("판매하려는 상품이 중고 상품이라면 0을, 새 상품이라면 1을 입력해주세요 : ");
-	scanf("%d", &p->used);
-	printf("\n제품이 정상적으로 등록되었습니다!!\n");
-	return 1;
-}
 
-
-void readProduct(Product *p){     //제품을 나열하기 위한 함수
-printf(" %s %5d %s %d\n", p.name, p.price, p.category, p.used);
+void readProduct(Product p){     //1개의 제품을 나열하기 위한 함수
+        printf(" %s %5d %s %d %s\n", p.name, p.price, p.category, p.used, p.id);
 }
 
 
@@ -97,9 +81,10 @@ int selectDataNo(Product *p, int count){    //수정하거나 삭제할 제품�
 	return no;
 }
 
-int selectMenu(){    //전체 메뉴를 보여주는 함수
+int selectMenu(char * id){    //전체 메뉴를 보여주는 함수
 	int menu;
-	printf("\n***************메뉴***************\n");
+	printf("\n 귀하의 아이디는 %s 입니다.\n",id);
+	printf("*********메뉴**********\n");
 	printf("1. 등록된 중고 제품  조회\n");
 	printf("2. 중고 제품 추가\n");
 	printf("3. 중고 제품 정보 수정\n");
@@ -139,6 +124,7 @@ void saveProduct(Product *p, int count){   //제품 데이터 저장하기 위�
                         p[i].name, p[i].price, p[i].category, p[i].used, p[i].id);
     }
     printf("파일에 저장되었습니다!\n");
+	fclose(fp);
 }
 
 int loadProduct(Product *p){     //제품 데이터 불러오기 위한 함수
@@ -205,21 +191,22 @@ void searchCategory(Product *p, int count){
 
 }*/
 
-/*
-char* LogIn(char **id){
+
+char* LogIn(char (*Memberlist)[N]){
 	char* input_id;
 	int i = 0;
 	char *a ="Guest";
 	printf("아이디를 입력해주세요: ");
 	scanf("%s",input_id);
-	while(input_id != id[i]){
+	while(input_id != Memberlist[i]){
+		if(Memberlist[i] == NULL)
+			return a;
 		i++;
 	}
-	if(input_id == id[i]) return input_id;
-	return a;
+	return input_id;
 }
 
-char* ID(char **id){
+char* ID(char (*Memberlist)[N]){
 	int answer;
 	char* input_id;
 	printf("아이디가 있으십니까? (예:1, 아니오: 0)");
@@ -228,27 +215,41 @@ char* ID(char **id){
 		printf("회원 가입하고자하는 아이디를 입력: ");
 		scanf("%s",input_id);
 	}else if(answer == 1){
-		input_id = Login(id);
-		if(input_id != NULL)
-			printf("로그인 완료\n");
+		input_id = LogIn(Memberlist);
+		if(input_id == "Guest")
+			printf("아이디가 없어 Guest로 진행합니다.\n");
 		else
-			printf("입력하신 아이디가 없습니다.\n");
+			printf("로그인 완료\n");
 	}
 	return input_id;	
 }
-*/
 
-int SaveData_Member(char *id, int Sign_count){
-
+void SaveData_Member(char *id){
+	FILE *fp;
+	fp = fopen("Member.txt","rt");
+	fprintf(fp,"%s",id);
+	fclose(fp); 
 }
 
-int LoadData_Member(char *id, int Sign_count){
-
+void LoadData_Member(char (*Memberlist)[N]){
+	int i = 0;
+	FILE *fp;
+	fp = fopen("Member.txt","wt");
+	if(fp == NULL) return ;
+	
+	while(1){
+		fscanf(fp,"%s",Memberlist[i]);
+		i++;
+		if(feof(fp)) break;
+	}
+	fclose(fp);
+	return;
 }
-
 int ReviewBoard(char *review){
-
+	
 }
+
+void printReview();
 
 int SaveData_Review(char *review, int Review_count){
 
