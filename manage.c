@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include "fleamarket.h"
 
+void listCategory(){    //전체 카테고리를 보여주는 함수
+        printf("\n-------------------------------------------------\n");
+        printf("                 CATEGORIES\n");
+        printf("-------------------------------------------------\n");
+        printf("clothes         shoes     accessories electronics\n");
+        printf("furnitures      living    books       tickets\n");
+        printf("-------------------------------------------------\n");
+}
+
 int createProduct(Product *p){    //제품명, 판매가격, 카테고리, 아이디, 중고상품여부를 만들기 위한 함수
 	getchar();
 	printf("회원님의 아이디를 입력하세요 : ");
@@ -10,6 +19,7 @@ int createProduct(Product *p){    //제품명, 판매가격, 카테고리, 아�
     	scanf("%[^\n]s", p->name);
     	printf("제품의 판매 가격을 입력하세요 : ");
     	scanf("%d", &p->price);
+	listCategory();
     	printf("제품의 카테고리를 입력하세요 : ");
 	getchar();
     	scanf("%[^\n]s", p->category);
@@ -52,6 +62,7 @@ int updateProduct(Product *p){    //제품을 수정하기 위한 함수
 	scanf("%[^\n]s", p->name);
 	printf("제품의 판매 가격을 입력하세요 : ");
 	scanf("%d", &p->price);
+	listCategory();
 	printf("제품의 카테고리를 입력하세요 : ");
 	getchar();
 	scanf("%[^\n]s", p->category);
@@ -78,7 +89,7 @@ int selectDataNo(Product *p, int count){    //수정하거나 삭제할 제품�
 
 int selectMenu(){    //전체 메뉴를 보여주는 함수
 	int menu;
-	printf("\n*********메뉴**********\n");
+	printf("\n***************메뉴***************\n");
 	printf("1. 등록된 중고 제품  조회\n");
 	printf("2. 중고 제품 추가\n");
 	printf("3. 중고 제품 정보 수정\n");
@@ -89,7 +100,7 @@ int selectMenu(){    //전체 메뉴를 보여주는 함수
 	printf("8. 제품 가격  검색\n");
 	printf("9. 카테고리 검색\n");
 	printf("0. 종료하기\n");
-	printf("**************************\n");
+	printf("***********************************\n\n");
 	printf("원하는 메뉴의 번호를 입력해주세요 :  ");
 	scanf("%d", &menu);
 	return menu;
@@ -142,7 +153,7 @@ int loadProduct(Product *p){     //제품 데이터 불러오기 위한 함수
         if(feof(fp)) break;
     }
     fclose(fp);
-    printf("파일을 로딩하였습니다.\n");
+    printf("등록된 제품을 로딩하였습니다.\n");
     return count;
 }
 
