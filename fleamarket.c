@@ -1,6 +1,6 @@
 #include "fleamarket.h"
 int main(void){
-  
+  	printf("\n안녕하세요!!\n양지후, 하정원의 fleamarket에 오신 것을 환영합니다:)\n\n");  
 	Product plist[100];
 	int curcount = 0;
 
