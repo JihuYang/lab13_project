@@ -20,8 +20,26 @@ int createProduct(Product *p){    //제품명, 판매가격, 카테고리, 아�
  
 }
 
-void readProduct(Product p){     //제품을 나열하기 위한 함수
-	printf(" %s %5d %s %d %s\n", p.name, p.price, p.category, p.used, p.id);
+int createProduct(Product *p){    //제품을 등록하는 함수 제품명, 판매가격, 카테고리, 아이디, 중고상품여부를 만들기 위한 함수
+	getchar();
+	printf("등록할 제품 이름을 입력하세요 : ");
+	scanf("%[^\n]s", p->name);
+	printf("원하는 판매 가격을 입력하세요 : ");
+	scanf("%d", &p->price);
+	getchar();
+	printf("등록할 제품의 카테고리를 입력하세요 : ");
+	scanf("%[^\n]s", p->category);	
+	printf("아이디를 입력해주세요: ");
+	scanf("%[^\n]s", p->id);
+	pritnf("판매하려는 상품이 중고 상품이라면 0을, 새 상품이라면 1을 입력해주세요 : ");
+	scanf("%d", &p->used);
+	printf("\n제품이 정상적으로 등록되었습니다!!\n");
+	return 1;
+}
+
+
+void readProduct(Product *p){     //제품을 나열하기 위한 함수
+printf(" %s %5d %s %d\n", p.name, p.price, p.category, p.used);
 }
 
 
