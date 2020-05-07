@@ -1,10 +1,10 @@
 CC = gcc
-CFlags = -W -Wall
+CFLAGS = -W -Wall
 TARGET = flea
 OBJECTS = fleamarket.c fleamarket.h manage.o
 
 $(TARGET) : $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS)  -o $@ $^
 
 clear :
 	rm *.o flea
