@@ -2,15 +2,6 @@
 #include "fleamarket.h"
 #define N 100
 
-<<<<<<< HEAD
-void listCategory(){	//전체 카테고리를 보여주는 함수
-	printf("\n---------------------------\n");
-	printf("CATEGORIES\n");
-	printf("clothes	shoes	accessories	electronics\n");
-	printf("furnitures	living	books	tickets\n");
-	printf("----------------------------\n");
-}	
-=======
 void listCategory(){    //전체 카테고리를 보여주는 함수
         printf("\n-------------------------------------------------\n");
         printf("                 CATEGORIES\n");
@@ -19,7 +10,6 @@ void listCategory(){    //전체 카테고리를 보여주는 함수
         printf("furnitures      living    books       tickets\n");
         printf("-------------------------------------------------\n");
 }
->>>>>>> 7a8525fb40e924e48d90353acc448882849efb5a
 
 int createProduct(Product *p){    //제품명, 판매가격, 카테고리, 아이디, 중고상품여부를 만들기 위한 함수
 	getchar();
