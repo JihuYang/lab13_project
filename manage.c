@@ -61,6 +61,7 @@ int deleteProduct(Product *p){    //제품을 삭제하기 위한 함수
         //p->id = "deleted";
         //p->category = "deleted";
         p->used = -1;
+	return 0;
 }
 
 int selectDataNo(Product *p, int count){    //수정하거나 삭제할 제품의 번호를 입력받는 함수
