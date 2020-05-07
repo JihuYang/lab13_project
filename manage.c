@@ -195,13 +195,13 @@ int ID(char (*Memberlist)[N], char *id, int ID_count){
         }else if(answer == 1){
                 printf("사용하시는 아이디 입력 : ");
                 scanf("%s", id);
-                while(i != ID_count){
-                    if(id == Memberlist[i]){
-                        printf("=> 로그인 완료\n");
-                        return 1;
+                    for(int i=0; i<ID_count; i++){
+                        if(id == Memberlist[i]){
+                            printf("=> 로그인 완료\n");
+                            return 1;
+                        }
+                    
                     }
-                    i++;
-                }
 
         }
         printf("=> 아이디가 없어 Guest로 진행합니다.\n");
