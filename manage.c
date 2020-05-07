@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include "fleamarket.h"
 
+void listCategory(){	//전체 카테고리를 보여주는 함수
+	printf("\n---------------------------\n");
+	printf("CATEGORIES\n");
+	printf("clothes	shoes	accessories	electronics\n");
+	printf("furnitures	living	books	tickets\n");
+	printf("----------------------------\n");
+}	
+
 int createProduct(Product *p){    //제품명, 판매가격, 카테고리, 아이디, 중고상품여부를 만들기 위한 함수
 	getchar();
 	printf("회원님의 아이디를 입력하세요 : ");
@@ -10,6 +18,7 @@ int createProduct(Product *p){    //제품명, 판매가격, 카테고리, 아�
     	scanf("%[^\n]s", p->name);
     	printf("제품의 판매 가격을 입력하세요 : ");
     	scanf("%d", &p->price);
+	listCategory();
     	printf("제품의 카테고리를 입력하세요 : ");
 	getchar();
     	scanf("%[^\n]s", p->category);
