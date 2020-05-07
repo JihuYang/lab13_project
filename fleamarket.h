@@ -8,7 +8,7 @@ typedef struct{
   char id[50];        //아이디
   int used;           //중고상품여부(0: 중고상품, 1: 새상품)
 } Product;      
-
+void listCategory();
 int createProduct(Product *p);  //제품명, 판매가격, 카테고리, 아이디, 중고상품여부를 만들기 위한 함수
 void readProduct(Product p);   //제품을 나열하기 위한 함수
 int updateProduct(Product *p);  //제품을 수정하기 위한 함수
