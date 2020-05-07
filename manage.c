@@ -18,8 +18,9 @@ int createProduct(Product *p){    //제품을 등록하는 함수 제품명, 판
 	return 1;
 }
 
-void readProduct(Product *p){     //1개의 제품을 출력하기 위한 함수
 
+void readProduct(Product *p){     //제품을 나열하기 위한 함수
+printf(" %s %5d %s %d\n", p.name, p.price, p.category, p.used);
 }
 
 
