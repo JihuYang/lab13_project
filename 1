@@ -20,26 +20,8 @@ int createProduct(Product *p){    //제품명, 판매가격, 카테고리, 아�
  
 }
 
-int createProduct(Product *p){    //제품을 등록하는 함수 제품명, 판매가격, 카테고리, 아이디, 중고상품여부를 만들기 위한 함수
-	getchar();
-	printf("등록할 제품 이름을 입력하세요 : ");
-	scanf("%[^\n]s", p->name);
-	printf("원하는 판매 가격을 입력하세요 : ");
-	scanf("%d", &p->price);
-	getchar();
-	printf("등록할 제품의 카테고리를 입력하세요 : ");
-	scanf("%[^\n]s", p->category);	
-	printf("아이디를 입력해주세요: ");
-	scanf("%[^\n]s", p->id);
-	pritnf("판매하려는 상품이 중고 상품이라면 0을, 새 상품이라면 1을 입력해주세요 : ");
-	scanf("%d", &p->used);
-	printf("\n제품이 정상적으로 등록되었습니다!!\n");
-	return 1;
-}
-
-
-void readProduct(Product *p){     //제품을 나열하기 위한 함수
-printf(" %s %5d %s %d\n", p.name, p.price, p.category, p.used);
+void readProduct(Product p){     //제품을 나열하기 위한 함수
+	printf(" %s %5d %s %d %s\n", p.name, p.price, p.category, p.used, p.id);
 }
 
 
@@ -86,8 +68,7 @@ int selectMenu(){    //전체 메뉴를 보여주는 함수
 	printf("5. 파일에 저장\n");
 	printf("6. 후기 게시판\n");
 	printf("7. 제품 검색\n");
-	printf("8. 제품 가격  검색\n");
-	printf("9. 카테고리 검색\n");
+	printf("8. 카테고리 검색\n");
 	printf("0. 종료하기\n");
 	printf("**************************\n");
 	printf("원하는 메뉴의 번호를 입력해주세요 :  ");
@@ -108,48 +89,16 @@ void listProduct(Product *p, int count){  //제품 나열을 하기 위한 함�
 
 
 void saveProduct(Product *p, int count){   //제품 데이터 저장하기 위한 함수
-    FILE *fp;
 
-    fp = fopen("product.txt", "wt");
-
-    for(int i=0;i<count;i++){
-        if(p[i].price!= -1)
-            fprintf(fp, "%s\n%d %s\n%d %s\n",
-                        p[i].name, p[i].price, p[i].category, p[i].used, p[i].id);
-    }
-    printf("파일에 저장되었습니다!\n");
 }
 
 int loadProduct(Product *p){     //제품 데이터 불러오기 위한 함수
-    int count = 0;
-
-    FILE *fp;
-    fp = fopen("product.txt", "rt");
-    if(fp==NULL){
-        printf("=> 파일이 없습니다.\n");
-        return 0;
-    }
-    for(;;count++){
-        //fscanf(fp, "%[^\n]s %d %[^\n]s %d %[^\n]s ",
-                        //p[count].name, &p[count].price, p[count].category,&p[count].used, p[count].id);
-        char c = 's';
-        fscanf(fp, "%[^\n]s", p[count].name);
-        fscanf(fp, "%d", &p[count].price);
-        fscanf(fp, "%[^\n]s", p[count].category);
-        fscanf(fp, "%d", &p[count].used);
-        fscanf(fp, "%[^\n]s", p[count].id);
-        fscanf(fp, "%c", &c);
-        if(feof(fp)) break;
-    }
-    fclose(fp);
-    printf("파일을 로딩하였습니다.\n");
-    return count;
+  
 }
 
 /*void Search(Product *p, int count){
 	int choice;
 	printf("\n1. 이름 검색\n");
-	printf("회원님의 아이디를 입력하세요 : ");
 	printf("2. 가격 검색\n");
 	printf("3. 카테고리 검색\n");
 	printf("검색 종류 선택 : ");
