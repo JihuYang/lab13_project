@@ -23,6 +23,8 @@ int main(void){
         curcount = count;
 
         id_sub = ID(Memberlist,id,ID_count);
+
+        printf("\\\n%s\\\n",Memberlist[1]);
         if(id_sub == 0)
                 id = "Guest";
         while (1){
