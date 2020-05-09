@@ -61,6 +61,7 @@ int deleteProduct(Product *p){    //제품을 삭제하기 위한 함수
         //p->id = "deleted";
         //p->category = "deleted";
         p->used = -1;
+	return 1;
 }
 
 int selectDataNo(Product *p, int count){    //수정하거나 삭제할 제품의 번호를 입력받는 함수
@@ -71,9 +72,8 @@ int selectDataNo(Product *p, int count){    //수정하거나 삭제할 제품�
         return no;
 }
 
-int selectMenu(char * id){    //전체 메뉴를 보여주는 함수
+int selectMenu(){    //전체 메뉴를 보여주는 함수
         int menu;
-        printf("\n 귀하의 아이디는 %s 입니다.\n",id);
         printf("*********메뉴**********\n");
         printf("1. 등록된 중고 제품  조회\n");
         printf("2. 중고 제품 추가\n");
@@ -140,14 +140,13 @@ int loadProduct(Product *p){     //제품 데이터 불러오기 위한 함수
         if(feof(fp)) break;
     }
     fclose(fp);
-    printf("등록된 제품을 로딩하였습니다.\n");
+    printf("=>등록된 제품을 로딩하였습니다.\n");
     return count;
 }
 
 /*void Search(Product *p, int count){
         int choice;
         printf("\n1. 이름 검색\n");
-        printf("회원님의 아이디를 입력하세요 : ");
         printf("2. 가격 검색\n");
         printf("3. 카테고리 검색\n");
         printf("검색 종류 선택 : ");
@@ -183,39 +182,24 @@ void searchCategory(Product *p, int count){
 }*/
 
 
-int ID(char (*Memberlist)[N], char *id, int ID_count){
+int ID(int ID_count){
         int answer;
-        int i =0;
         printf("아이디가 있으십니까? (예:1, 아니오: 0)");
         scanf("%d",&answer);
-        if(answer == 0){
-                printf("회원 가입하고자하는 아이디를 입력: ");
-                scanf("%s",id);
-                return 1;
-        }else if(answer == 1){
-                printf("사용하시는 아이디 입력 : ");
-                scanf("%s", id);
-                    for(int i=0; i<ID_count; i++){
-                        if(id == Memberlist[i]){
-                            printf("=> 로그인 완료\n");
-                            return 1;
-                        }
-                    
-                    }
-
-        }
-        printf("=> 아이디가 없어 Guest로 진행합니다.\n");
-        return 0;
+        return answer;
 }
 
-void SaveData_Member(char *id){
+void SaveData_Member(Data *data, int ID_count){
         FILE *fp;
         fp = fopen("Member.txt","wt");
-        fprintf(fp,"%s",id);
+        for(int i=0; i<ID_count; i++){
+        fprintf(fp,"%s ",data[i].idid);
+        }
         fclose(fp);
+        printf("=> 아이디 저장 완료하였습니다.\n");
 }
 
-int LoadData_Member(char (*Memberlist)[N]){
+int LoadData_Member(Data* data){
         int i = 0;
         FILE *fp;
         fp = fopen("Member.txt","rt");
@@ -224,7 +208,7 @@ int LoadData_Member(char (*Memberlist)[N]){
                  return 0;
         }
         while(1){
-                fscanf(fp,"%s",Memberlist[i]);
+                fscanf(fp,"%s",data[i].idid);
                 i++;
                 if(feof(fp)) break;
         }
@@ -232,33 +216,34 @@ int LoadData_Member(char (*Memberlist)[N]){
         printf("=> 아이디 파일 로딩완료하였습니다.\n");
         return i;
 }
-int ReviewBoard(char (*review)[N], int count){
+int ReviewBoard(Data *data, int count){
         int a;
-        char *rv;
-        printReview(review,count);
+        printReview(data,count);
         printf("후기를 남기시겠습니까? (예: 1, 아니오 : 0)");
         scanf("%d",&a);
         return a;
 }
 
-void printReview(char (*review)[N],int count){
+void printReview(Data* data,int count){
         int i=0;
         printf("\n======================\n");
         for(i=0; i<count ; i++){
-                printf("%d. %s\n",i+1, review[i]);
+                printf("%d. %s\n",i+1, data[i].review);
         }
         printf("======================\n");
 }
 
-void SaveData_Review(char *review, int Review_count){
+void SaveData_Review(Data* data, int Review_count){
         FILE *fp;
         fp = fopen("Review.txt","wt");
-        fprintf(fp,"%s",review);
+        for(int i=0; i<Review_count; i++){
+        fprintf(fp,"%s",data[i].review);
+        }
         fclose(fp);
         printf("리뷰 저장완료하였습니다.\n");
 }
 
-int LoadData_Review(char (*review)[N]){
+int LoadData_Review(Data* data){
         int i =0;
         FILE *fp;
         fp = fopen("Review.txt","rt");
@@ -267,7 +252,7 @@ int LoadData_Review(char (*review)[N]){
         return 0;
         }
         while(1){
-                fscanf(fp,"%s",review[i]);
+                fscanf(fp,"%[^\n]s",data[i].review);
                 i++;
                 if(feof(fp)) break;
         }
@@ -275,3 +260,4 @@ int LoadData_Review(char (*review)[N]){
         printf("리뷰를 로딩하였습니다.\n");
         return i;
 }
+
