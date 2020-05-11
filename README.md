@@ -1,3 +1,4 @@
+
 ## mini project 주제
 
 CRUD를 사용한 Fleamarket 관리
@@ -8,25 +9,6 @@ CRUD를 사용한 Fleamarket 관리
 
 ## mini project 가 가지고 있는 대략적인 기능 설명
 ~~~
-=======
-팀소개
-===
-#### 팀원: 21900433 양지후, 21900780 하정원
-#### 역할 
-- 양지후: 뼈대의 역할을 할 CRUD와 main함수를 작성
-- 하정원: 기능적인 역할을 할 Search, SignUp, ReView 함수를 작성
-
-mini project 개발 repository url
-===
-https://github.com/JeongWonHA/mini_project
-
-mini project 주제
-===
-CRUD를 사용한 Fleamarket 관리
-
-
-mini project 가 가지고 있는 대략적인 기능 설명
-===
 1. Sign up
     * 회원가입
 2. Create Product
@@ -48,7 +30,7 @@ mini project 가 가지고 있는 대략적인 기능 설명
 9. Save data about member information  
     * 파일에 회원의 아이디를 저장
 10. Save data about review 
-    * 파일에 등록된 제품들의 후기를작성
+    * 파일에 등록된 제품들의 후기를 저장
 ~~~
 
 ## 0507 현재 프로젝트 진행 현황
@@ -108,5 +90,5 @@ int LoadData_Review(char *review, int Review_count); //후기 게시판 데이�
 -> 구현완료
 
 05/07 대략적인 구현은 마무리 되었고 디테일한 부분을 고쳐야됨
+05/11 개발 rep
 ~~~
-
