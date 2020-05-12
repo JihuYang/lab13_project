@@ -36,4 +36,7 @@ int  ReviewBoard(Data* data, int Review_count); //후기게시판을 쓰기 위�
 void printReview(Data* data, int Review_count);
 void SaveData_Review(Data* data, int Review_count); //후기게시판 데이터를 저장하기 위한 함수
 int LoadData_Review(Data* data); //후기 게시판 데이터를 불러오기 위한 함수
-
+int loadData_member(Data* data);  //회원 데이터 불러오기 위한 함수
+void saveData_member(Data *data, int count);  //회원 데이터 저장하기 위한 함수
+int sign(Data* data, int count);  //회원여부를 파악하는 함수
+void signin(Data *data, int count); //회원가입 함수

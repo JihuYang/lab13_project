@@ -13,6 +13,14 @@ int main(void){
         int review_count = 0;
         review_count = LoadData_Review(data);
 
+        int memberCount = 0;
+        memberCount = loadData_member(data);
+
+        if(sign(data, memberCount)!=0) {     //회원이라고 입력했지만 아이디가 없는 경우, 회원이 아니라고 입력한 경우
+          signin(data, memberCount++);         //아이디 등록
+          saveData_member(data, memberCount);    //아이디 파일에 저장
+        }
+
         while (1){
                 menu = selectMenu();
                 if (menu == 0) break;

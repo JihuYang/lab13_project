@@ -224,4 +224,60 @@ int LoadData_Review(Data* data){
         printf("=> 후기 로딩 완료!\n");
         return i;
 }
+int loadData_member(Data* data){
+    int count = 0;
+
+    FILE *fp;
+    fp = fopen("member.txt", "rt");
+    if(fp==NULL){
+        printf("회원이 없습니다.\n");
+        return 0;
+    }
+    for(;;count++){
+        fscanf(fp, "%s", data[count].idid);
+        if(feof(fp)) break;
+    }
+
+    fclose(fp);
+    printf("전체 회원 로딩 성공!\n");
+    return count;
+}
+int sign(Data *data, int count){
+  int memberCount = 0;
+  char sign;
+  char member[20];
+  printf("\n\n회원이라면 y를, 회원이 아니라면 n을 입력해주세요 : ");
+  scanf("%c", &sign);
+  if(sign == 'y'){
+    printf("아이디를 입력해주세요 : ");
+    scanf("%s", member);
+      for(int i=0;i<count;i++){
+        if(strstr(data[i].idid, member)){
+          printf("\n%s 로 로그인합니다.\n%s 회원님 환영합니다!\n", data[i].idid, data[i].idid);
+          memberCount++;
+        }
+      }
+      if(memberCount==0){
+        printf("\n아이디가 없습니다.\n");
+        return 1;
+      }
+  }
+  else return 2;  //회원이 아니라고 입력한 경우
+  return 0; //등록된 회원인 경우
+}
+void saveData_member(Data *data, int count){         //파일에 제품을 저장하는 함수
+    FILE *fp;
+
+    fp = fopen("member.txt", "wt");
+    for(int i=0;i<count;i++){
+            fprintf(fp, "%s\n", data[i].idid);
+    }
+
+    printf("아이디가 등록되었습니다. \n");
+    fclose(fp);
+}
+void signin(Data *data, int count){
+    printf("\n회원가입을 진행합니다...\n원하는 아이디를 입력해주세요 : ");
+    scanf("%s", data[count].idid);
+}
 
