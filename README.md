@@ -62,6 +62,18 @@ void saveProduct(Product *p, int count);     //제품 데이터 저장하기 위
 int loadProduct(Product *p);                 //제품 데이터 불러오기 위한 함수
 -> 양지후 구현 완료
 
+int loadData_member(Data* data);  //회원 데이터 불러오기 위한 함수
+-> 0512 양지후 구현 완료
+
+void saveData_member(Data *data, int count);  //회원 데이터 저장하기 위한 함수
+-> 0512 양지후 구현 완료
+
+int sign(Data* data, int count);  //회원여부를 파악하는 함수
+-> 0512 양지후 구현 완료
+
+void signin(Data *data, int count); //회원가입 함수
+-> 0512 양지후 구현 완료
+
 void Search(Product *p, int count);
 -> 보류
 void searchName(Product *p, int count);      //제품 이름을 검색하는 함수
@@ -90,5 +102,6 @@ int LoadData_Review(char *review, int Review_count); //후기 게시판 데이�
 -> 구현완료
 
 05/07 대략적인 구현은 마무리 되었고 디테일한 부분을 고쳐야됨
-05/11 개발 rep
+05/11 개발 repository 
+05/12 회원 여부를 파악하여 회원이 아닐 경우 회원가입하도록 구현
 ~~~
