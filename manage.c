@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "fleamarket.h"
+#include <string.h>
 #define N 100
 
 void listCategory(){    //전체 카테고리를 보여주는 함수
@@ -122,7 +123,7 @@ int loadProduct(Product *p){     //제품 데이터 불러오기 위한 함수
     FILE *fp;
     fp = fopen("product.txt", "rt");
     if(fp==NULL){
-        printf("=> 파일이 없습니다.\n");
+        printf("=>제품 파일이 없습니다.\n");
         return 0;
     }
     for(;;count++){
@@ -142,7 +143,7 @@ int loadProduct(Product *p){     //제품 데이터 불러오기 위한 함수
     return count;
 }
 
-/*void Search(Product *p, int count){
+void Search(Product *p, int count){
         int choice;
         printf("\n1. 이름 검색\n");
         printf("2. 가격 검색\n");
@@ -151,11 +152,11 @@ int loadProduct(Product *p){     //제품 데이터 불러오기 위한 함수
         scanf("%d",&choice);
         switch(choice){
         case 1:
-        searchName(p[], couunt); break;
+        searchName(p, count); break;
         case 2:
-        searchPrice(p[],count); break;
+        searchPrice(p,count); break;
         case 3:
-        searchCategory(p[],count); break;
+        searchCategory(p,count); break;
         }
 }
 
@@ -163,21 +164,40 @@ void searchName(Product *p, int count){
         char name[100];
         int i = 0;
         printf("검색 할 이름 : ");
-        scanf("%d",name);
+        scanf("%s",name);
+        printf("***********************************\n");
         for( i = 0; i < count; i++){
-                if(name == p[i]->name)
-                        listProduct(p);
+                if(strcmp(name, p[i].name)==0){
+                        readProduct(p[i]);
+                }
         }
         return;
 }
 
 void searchPrice(Product *p, int count){
+        int price;
+        printf("검색 할 가격 : ");
+        scanf("%d",&price);
+        printf("***********************************\n");
+        for(int i=0; i<count; i++){
+                if(price == p[i].price)
+                        readProduct(p[i]);
 
+        }
+        return;
 }
 
 void searchCategory(Product *p, int count){
-
-}*/
+        char category[100];
+        printf("검색 할 카테고리 : ");
+        scanf("%s",category);
+        printf("***********************************\n");
+        for(int i=0; i< count; i++){
+                if(strcmp(category, p[i].category)==0)
+                        readProduct(p[i]);
+        }
+        return;
+}
 
 int ReviewBoard(Data *data, int Reveiw_count){
         int a;
@@ -211,7 +231,7 @@ int LoadData_Review(Data* data){
         int i = 0;
         fp = fopen("Review.txt","rt");
         if(fp == NULL){
-                printf("=> 파일 없음!\n");
+                printf("=>후기 파일 없음!\n");
                 return 0;
         }
         while(1){
