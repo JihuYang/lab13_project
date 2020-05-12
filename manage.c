@@ -61,11 +61,7 @@ int deleteProduct(Product *p){    //제품을 삭제하기 위한 함수
         //p->id = "deleted";
         //p->category = "deleted";
         p->used = -1;
-<<<<<<< HEAD
-	return 0;
-=======
-	return 1;
->>>>>>> e195ebf0d0ed6cb953e76eae7a18c32ef675c39c
+        return 1;
 }
 
 int selectDataNo(Product *p, int count){    //수정하거나 삭제할 제품의 번호를 입력받는 함수
@@ -78,7 +74,7 @@ int selectDataNo(Product *p, int count){    //수정하거나 삭제할 제품�
 
 int selectMenu(){    //전체 메뉴를 보여주는 함수
         int menu;
-        printf("*********메뉴**********\n");
+        printf("\n*********메뉴**********\n");
         printf("1. 등록된 중고 제품  조회\n");
         printf("2. 중고 제품 추가\n");
         printf("3. 중고 제품 정보 수정\n");
@@ -86,12 +82,10 @@ int selectMenu(){    //전체 메뉴를 보여주는 함수
         printf("5. 검색\n");
         printf("6. 후기 게시판\n");
         printf("7. 제품 파일 저장\n");
-        printf("8. 아이디 저장\n");
-        printf("9. 작성한 후기 저장\n");
+        printf("8. 작성한 후기 저장\n");
         printf("0. 종료하기\n");
         printf("***********************************\n\n");
         printf("원하는 메뉴의 번호를 입력해주세요 :  ");
-        getchar();
         scanf("%d", &menu);
         return menu;
 }
@@ -185,54 +179,19 @@ void searchCategory(Product *p, int count){
 
 }*/
 
-
-int ID(int ID_count){
-        int answer;
-        printf("아이디가 있으십니까? (예:1, 아니오: 0)");
-        scanf("%d",&answer);
-        return answer;
-}
-
-void SaveData_Member(Data *data, int ID_count){
-        FILE *fp;
-        fp = fopen("Member.txt","wt");
-        for(int i=0; i<ID_count; i++){
-        fprintf(fp,"%s ",data[i].idid);
-        }
-        fclose(fp);
-        printf("=> 아이디 저장 완료하였습니다.\n");
-}
-
-int LoadData_Member(Data* data){
-        int i = 0;
-        FILE *fp;
-        fp = fopen("Member.txt","rt");
-        if(fp == NULL){
-                printf("=> 아이디 파일이 없습니다.\n");
-                 return 0;
-        }
-        while(1){
-                fscanf(fp,"%s",data[i].idid);
-                i++;
-                if(feof(fp)) break;
-        }
-        fclose(fp);
-        printf("=> 아이디 파일 로딩완료하였습니다.\n");
-        return i;
-}
-int ReviewBoard(Data *data, int count){
+int ReviewBoard(Data *data, int Reveiw_count){
         int a;
-        printReview(data,count);
+        printReview(data,Reveiw_count);
         printf("후기를 남기시겠습니까? (예: 1, 아니오 : 0)");
         scanf("%d",&a);
         return a;
 }
 
-void printReview(Data* data,int count){
+void printReview(Data* data,int Review_count){
         int i=0;
         printf("\n======================\n");
-        for(i=0; i<count ; i++){
-                printf("%d. %s\n",i+1, data[i].review);
+        for(i=0; i<Review_count ; i++){
+                printf("%d.\n 아이디: %s\n 후기: %s\n",i+1,data[i].idid,data[i].review);
         }
         printf("======================\n");
 }
@@ -240,28 +199,29 @@ void printReview(Data* data,int count){
 void SaveData_Review(Data* data, int Review_count){
         FILE *fp;
         fp = fopen("Review.txt","wt");
-        for(int i=0; i<Review_count; i++){
-        fprintf(fp,"%s",data[i].review);
+        for(int i =0; i < Review_count; i++){
+                fprintf(fp,"%s %s\n",data[i].idid, data[i].review);
         }
         fclose(fp);
-        printf("리뷰 저장완료하였습니다.\n");
+        printf("=> 후기 저장 완료!\n");
+        return;
 }
-
 int LoadData_Review(Data* data){
-        int i =0;
         FILE *fp;
+        int i = 0;
         fp = fopen("Review.txt","rt");
         if(fp == NULL){
-                printf("=> 후기 파일이 없습니다.\n");
-        return 0;
+                printf("=> 파일 없음!\n");
+                return 0;
         }
         while(1){
+                fscanf(fp,"%s",data[i].idid);
                 fscanf(fp,"%[^\n]s",data[i].review);
-                i++;
                 if(feof(fp)) break;
+                i++;
         }
         fclose(fp);
-        printf("리뷰를 로딩하였습니다.\n");
+        printf("=> 후기 로딩 완료!\n");
         return i;
 }
 
