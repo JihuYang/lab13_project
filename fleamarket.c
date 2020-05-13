@@ -12,14 +12,21 @@ int main(void){
         curcount = count;
         int review_count = 0;
         review_count = LoadData_Review(data);
-
         int memberCount = 0;
         memberCount = loadData_member(data);
-
+        //printf("membercount : %d\n", memberCount);
         if(sign(data, memberCount)!=0) {     //회원이라고 입력했지만 아이디가 없는 경우, 회원이 아니라고 입력한 경우
+          //printf("membercount : %d\n", memberCount);
           signin(data, memberCount++);         //아이디 등록
+          //printf("membercount : %d\n", memberCount);
           saveData_member(data, memberCount);    //아이디 파일에 저장
         }
+        //printf("membercount : %d\n", memberCount);
+        /*
+        for(int i=0;i<memberCount;i++){
+          printf("%d %s\n", i, data[i].idid );
+        }
+        */
 
         while (1){
                 menu = selectMenu();
