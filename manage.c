@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "fleamarket.h"
-#include <string.h>
 #define N 100
 
 void listCategory(){    //전체 카테고리를 보여주는 함수
@@ -231,7 +230,7 @@ int LoadData_Review(Data* data){
         int i = 0;
         fp = fopen("Review.txt","rt");
         if(fp == NULL){
-                printf("=>후기 파일 없음!\n");
+                printf("=> 후기 파일 없음!\n");
                 return 0;
         }
         while(1){
