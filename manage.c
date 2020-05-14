@@ -163,7 +163,8 @@ void searchName(Product *p, int count){
         char name[100];
         int i = 0;
         printf("검색 할 이름 : ");
-        scanf("%s",name);
+        getchar();
+        scanf("%[^\n]s",name);
         printf("***********************************\n");
         for( i = 0; i < count; i++){
                 if(strcmp(name, p[i].name)==0){
