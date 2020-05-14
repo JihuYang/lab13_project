@@ -146,7 +146,7 @@ void Search(Product *p, int count){
         int choice;
         printf("\n1. 이름 검색\n");
         printf("2. 가격 검색\n");
-        printf("3. 카테고리 검색\n");
+        printf("3. 중고, 새상품 구분\n");
         printf("검색 종류 선택 : ");
         scanf("%d",&choice);
         switch(choice){
@@ -155,7 +155,7 @@ void Search(Product *p, int count){
         case 2:
         searchPrice(p,count); break;
         case 3:
-        searchCategory(p,count); break;
+        searchused(p,count); break;
         }
 }
 
@@ -187,13 +187,13 @@ void searchPrice(Product *p, int count){
         return;
 }
 
-void searchCategory(Product *p, int count){
-        char category[100];
-        printf("검색 할 카테고리 : ");
-        scanf("%s",category);
+void searchused(Product *p, int count){
+        int used;
+        printf("중고는 0입력, 새상품은 1입력: ");
+        scanf("%d",&used);
         printf("***********************************\n");
         for(int i=0; i< count; i++){
-                if(strcmp(category, p[i].category)==0)
+                if(p[i].used == used)
                         readProduct(p[i]);
         }
         return;
