@@ -29,7 +29,7 @@ int loadProduct(Product *p);                 //제품 데이터 불러오기 위
 void Search(Product *p, int count);
 void searchName(Product *p, int count);      //제품 이름을 검색하는 함수
 void searchPrice(Product *p, int count);     //가격을 검색하는 함수
-void searchCategory(Product *p, int count);  //카테고리를 검색하는 함수
+void searchused(Product *p, int count);  //카테고리를 검색하는 함수
 void SaveData_Product(Product *p, int count);     //제품 데이터 저장하기 위한 함수
 int LoadData_Product(Product *p);                 //제품 데이터 불러오기 위한 함수
 int  ReviewBoard(Data* data, int Review_count); //후기게시판을 쓰기 위한 함수
