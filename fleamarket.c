@@ -64,7 +64,7 @@ int main(void){
                         if(deleteProduct(&p) == 1) printf("삭제되었습니다!!\n");
                 }
                 else if (menu == 5){
-                //      Search(plist, curcount);
+                      Search(plist, curcount);
                 }
 
                 else if(menu == 6){

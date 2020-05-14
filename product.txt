@@ -1,6 +1,3 @@
 pink coat
-50000 outer
-0 haha hoho
-black jeans
-7000 pant
-0 treett
+20000 clothes
+0 happy

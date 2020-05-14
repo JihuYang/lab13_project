@@ -74,7 +74,7 @@ int selectDataNo(Product *p, int count){    //수정하거나 삭제할 제품�
 
 int selectMenu(){    //전체 메뉴를 보여주는 함수
         int menu;
-        printf("\n*********메뉴**********\n");
+        printf("\n**************메뉴***************\n");
         printf("1. 등록된 중고 제품  조회\n");
         printf("2. 중고 제품 추가\n");
         printf("3. 중고 제품 정보 수정\n");
@@ -112,7 +112,7 @@ void saveProduct(Product *p, int count){   //제품 데이터 저장하기 위�
             fprintf(fp, "%s\n%d %s\n%d %s\n",
                         p[i].name, p[i].price, p[i].category, p[i].used, p[i].id);
     }
-    printf("파일에 저장되었습니다!\n");
+    printf("\n등록한 제품이 파일에 저장되었습니다!\n");
         fclose(fp);
 }
 
@@ -122,7 +122,7 @@ int loadProduct(Product *p){     //제품 데이터 불러오기 위한 함수
     FILE *fp;
     fp = fopen("product.txt", "rt");
     if(fp==NULL){
-        printf("=>제품 파일이 없습니다.\n");
+        printf("로딩할 제품 파일이 없습니다.\n");
         return 0;
     }
     for(;;count++){
@@ -138,7 +138,7 @@ int loadProduct(Product *p){     //제품 데이터 불러오기 위한 함수
         if(feof(fp)) break;
     }
     fclose(fp);
-    printf("=>등록된 제품을 로딩하였습니다.\n");
+    printf("등록된 제품을 로딩하였습니다.\n");
     return count;
 }
 
@@ -222,7 +222,7 @@ void SaveData_Review(Data* data, int Review_count){
                 fprintf(fp,"%s %s\n",data[i].idid, data[i].review);
         }
         fclose(fp);
-        printf("=> 후기 저장 완료!\n");
+        printf("후기를 저장하였습니다.\n");
         return;
 }
 int LoadData_Review(Data* data){
@@ -230,7 +230,7 @@ int LoadData_Review(Data* data){
         int i = 0;
         fp = fopen("Review.txt","rt");
         if(fp == NULL){
-                printf("=> 후기 파일 없음!\n");
+                printf("로딩할 후기 파일이 없습니다.!\n");
                 return 0;
         }
         while(1){
@@ -240,7 +240,7 @@ int LoadData_Review(Data* data){
                 i++;
         }
         fclose(fp);
-        printf("=> 후기 로딩 완료!\n");
+        printf("후기를 로딩하였습니다.\n");
         return i;
 }
 int loadData_member(Data* data){
@@ -258,7 +258,7 @@ int loadData_member(Data* data){
     }
 
     fclose(fp);
-    printf("전체 회원 로딩 성공!\n");
+    printf("전체 회원을 로딩하였습니다.\n");
     return count;
 }
 int sign(Data *data, int count){
